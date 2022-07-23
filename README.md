@@ -1,7 +1,12 @@
 # Strapi Server for Blogging
 I wanted to experiment with a headless CMS. I love the idea of Wordpress to easily create blogs. Traditionally, we have CMS like Wordpress that requires a database to store content and there's also a presentation layer of template files that mix HTML with template tags. In this type of architecture, the frontend and backend are tighly coupled. Both the content and how it’s presented are part of the same code base (aka monolithic architecture). This repo was bootstrapped with Strapi's starter project and tailored to my needs.
 
-This [server](https://ethan-strapi.herokuapp.com/admin) works in conjunction with my [client repo](https://github.com/etuong/headless-cms-blog). You can create content and consume it on the client.
+This [server](https://ethan-strapi.herokuapp.com/admin) works in conjunction with my [client repo](https://github.com/etuong/headless-cms-blog). You can create content and consume it on the client. You may use my dummy credentials to log in the console.
+
+```
+Email: email@email.com
+Password: Password1
+```
 
 # 🚀 Getting started with Strapi
 
