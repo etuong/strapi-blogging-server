@@ -1,3 +1,8 @@
+# Strapi Server for Blogging
+I wanted to experiment with a headless CMS. I love the idea of Wordpress to easily create blogs. Traditionally, we have CMS like Wordpress that requires a database to store content and there's also a presentation layer of template files that mix HTML with template tags. In this type of architecture, the frontend and backend are tighly coupled. Both the content and how it’s presented are part of the same code base (aka monolithic architecture). This repo was bootstrapped with Strapi's starter project and tailored to my needs.
+
+This [server](https://ethan-strapi.herokuapp.com/admin) works in conjunction with my [client repo](https://github.com/etuong/headless-cms-blog). You can create content and consume it on the client.
+
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
@@ -12,16 +17,6 @@ npm run develop
 yarn develop
 ```
 
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
-
-```
-npm run start
-# or
-yarn start
-```
-
 ### `build`
 
 Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
@@ -33,25 +28,21 @@ yarn build
 ```
 
 ## ⚙️ Deployment
+I am using Heroku as my PaaS with Postgres as the database. Instructions can be found [here](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment/hosting-guides/heroku.html)
 
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+The following are all the required environment variables. Note that I am using Cloudinary as an image bucket because Strapi cache will be clear everytime Heroku restarts.
+
+```bash
+heroku config:set MY_HEROKU_URL=$(heroku info -s | grep web_url | cut -d= -f2) 
+heroku config:set APP_KEYS=$(cat .env | grep APP_KEYS | cut -d= -f2-)
+heroku config:set API_TOKEN_SALT=$(cat .env | grep API_TOKEN_SALT | cut -d= -f2)
+heroku config:set ADMIN_JWT_SECRET=$(cat .env | grep ADMIN_JWT_SECRET | cut -d= -f2)
+heroku config:set JWT_SECRET=$(cat .env | grep -w JWT_SECRET | cut -d= -f2)
+heroku config:set CLOUDINARY_NAME=$(cat .env | grep CLOUDINARY_NAME | cut -d= -f2)
+heroku config:set CLOUDINARY_KEY=$(cat .env | grep CLOUDINARY_KEY | cut -d= -f2)
+heroku config:set CLOUDINARY_SECRET=$(cat .env | grep -w CLOUDINARY_SECRET | cut -d= -f2)
+```
 
 ## 📚 Learn more
+You can find more information on the Strapi's [website](https://docs.strapi.io/developer-docs/latest/getting-started/introduction.html)!
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
