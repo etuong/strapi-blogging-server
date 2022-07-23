@@ -6,12 +6,13 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "NODE_ENV=production strapi build",
+    "build": "strapi build",
     "strapi": "strapi"
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.1.12",
     "@strapi/plugin-users-permissions": "4.1.12",
+    "@strapi/provider-upload-cloudinary": "^4.2.3",
     "@strapi/strapi": "4.1.12",
     "better-sqlite3": "7.4.6",
     "pg": "^8.7.3",
