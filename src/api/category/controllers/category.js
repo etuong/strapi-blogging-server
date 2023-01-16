@@ -19,10 +19,8 @@ module.exports = createCoreController(
           }
         });
 
-      // If not great than 3, then create category, if true return the message
-      const finalRes = (await response) ?? super.create(ctx);
-
-      return finalRes;
+      // Create category if count not greater than 3, otherwise return the message
+      return response ?? super.create(ctx);
     },
   })
 );
